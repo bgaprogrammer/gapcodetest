@@ -2,14 +2,41 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>aspnet-jrgapcodetest-C9D6720A-A831-4D58-BFCF-023A8ACD9431</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.1" />
+    <PackageReference Include="MySqlConnector" Version="0.36.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.0.1" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2" />
   </ItemGroup>
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
+    <Folder Include="Models\Dto\" />
+    <Folder Include="Views\Poliza\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Account\AccessDenied.cshtml" />
+    <Content Remove="Views\Account\ConfirmEmail.cshtml" />
+    <Content Remove="Views\Account\ExternalLogin.cshtml" />
+    <Content Remove="Views\Account\ForgotPassword.cshtml" />
+    <Content Remove="Views\Manage\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Models\ManageViewModels\ChangePasswordViewModel.cs" />
+  </ItemGroup>
 </Project>
