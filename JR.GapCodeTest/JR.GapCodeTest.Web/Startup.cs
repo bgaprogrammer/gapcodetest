@@ -81,9 +81,9 @@ namespace JR.GapCodeTest.Web
             {
                 options.Cookie.HttpOnly = true;
                 options.Cookie.Expiration = TimeSpan.FromDays(150);
-                options.LoginPath = "/Account/Login";
-                options.LogoutPath = "/Account/Logout";
-                options.AccessDeniedPath = "/Account/AccessDenied";
+                options.LoginPath = "/Home/Index";
+                options.LogoutPath = "/Home/Index";
+                options.AccessDeniedPath = "/Home/Index";
                 options.SlidingExpiration = true;
             });
 
