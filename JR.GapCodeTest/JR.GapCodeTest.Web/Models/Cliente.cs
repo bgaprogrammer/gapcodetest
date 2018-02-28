@@ -7,13 +7,13 @@ namespace JR.GapCodeTest.Web.Models
     {
         public Cliente()
         {
-            Polizas = new HashSet<Poliza>();
+            PolizaClientes = new HashSet<PolizaCliente>();
         }
 
         public int Id { get; set; }
         public string Documento { get; set; }
         public string Nombre { get; set; }
 
-        public ICollection<Poliza> Polizas { get; set; }
+        public ICollection<PolizaCliente> PolizaClientes { get; set; }
     }
 }

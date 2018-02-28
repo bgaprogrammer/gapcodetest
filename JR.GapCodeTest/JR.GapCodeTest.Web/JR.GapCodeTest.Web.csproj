@@ -39,5 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Models\ManageViewModels\ChangePasswordViewModel.cs" />
+    <Compile Remove="Data\Migrations\20180228113430_Initial.cs" />
+    <Compile Remove="Data\Migrations\20180228113430_Initial.Designer.cs" />
   </ItemGroup>
 </Project>

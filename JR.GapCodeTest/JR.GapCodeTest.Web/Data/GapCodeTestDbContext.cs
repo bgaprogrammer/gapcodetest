@@ -32,6 +32,8 @@ namespace JR.GapCodeTest.Web.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<PolizaCliente>().HasKey(t => new { t.PolizaId, t.ClienteId });
+            
             base.OnModelCreating(modelBuilder);
         }
     }

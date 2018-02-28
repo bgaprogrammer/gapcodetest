@@ -7,7 +7,7 @@ namespace JR.GapCodeTest.Web.Models
     {
         public Poliza()
         {
-            Clientes = new HashSet<Cliente>();
+            PolizaClientes = new HashSet<PolizaCliente>();
         }
 
         public int Id { get; set; }
@@ -20,6 +20,6 @@ namespace JR.GapCodeTest.Web.Models
 
         public Tipocubrimiento TipoCubrimiento { get; set; }
         public Tiporiesgo TipoRiesgo { get; set; }
-        public ICollection<Cliente> Clientes { get; set; }
+        public ICollection<PolizaCliente> PolizaClientes { get; set; }
     }
 }

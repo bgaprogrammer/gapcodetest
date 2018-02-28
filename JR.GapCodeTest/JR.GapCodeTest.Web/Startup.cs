@@ -91,9 +91,9 @@ namespace JR.GapCodeTest.Web
             services.AddTransient<ICiudad, CiudadService>();
             services.AddTransient<IAgencia, AgenciaService>();
             services.AddTransient<ICliente, ClienteService>();
+            services.AddTransient<IPoliza, PolizaService>();
 
-
-            services.AddAutoMapper();
+            services.AddAutoMapper(x => x.AddProfile(new MappingsProfile()));
             services.AddMvc();
         }
 
