@@ -16,6 +16,7 @@ using JR.GapCodeTest.Web.Data;
 using JR.GapCodeTest.Web.Services;
 using JR.GapCodeTest.Web.Models;
 using System.Text;
+using AutoMapper;
 
 namespace JR.GapCodeTest.Web
 {
@@ -87,8 +88,12 @@ namespace JR.GapCodeTest.Web
                 options.SlidingExpiration = true;
             });
 
+            services.AddTransient<ICiudad, CiudadService>();
+            services.AddTransient<IAgencia, AgenciaService>();
+            services.AddTransient<ICliente, ClienteService>();
 
-            
+
+            services.AddAutoMapper();
             services.AddMvc();
         }
 

@@ -7,12 +7,12 @@ namespace JR.GapCodeTest.Web.Models
     {
         public Ciudad()
         {
-            Agencia = new HashSet<Agencia>();
+            Agencias = new HashSet<Agencia>();
         }
 
         public int Id { get; set; }
         public string Nombre { get; set; }
 
-        public ICollection<Agencia> Agencia { get; set; }
+        public ICollection<Agencia> Agencias { get; set; }
     }
 }

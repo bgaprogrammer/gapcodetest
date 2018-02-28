@@ -7,7 +7,6 @@ namespace JR.GapCodeTest.Web.Models
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public int IdCiudad { get; set; }
 
         public Ciudad Ciudad { get; set; }
     }
