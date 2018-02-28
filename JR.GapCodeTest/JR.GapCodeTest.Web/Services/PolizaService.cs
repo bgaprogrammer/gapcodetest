@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using JR.GapCodeTest.Web.Data;
 using JR.GapCodeTest.Web.Models.Dto;
+using Microsoft.EntityFrameworkCore;
 
 namespace JR.GapCodeTest.Web.Services
 {
@@ -17,34 +19,38 @@ namespace JR.GapCodeTest.Web.Services
             _mapper = mapper;
         }
 
-        public PolizaDto ActualizarPoliza(PolizaDto p)
+        public async Task<PolizaDto> ActualizarPoliza(PolizaDto p)
         {
             throw new NotImplementedException();
         }
 
-        public PolizaDto CrearPoliza(PolizaDto p)
+        public async Task<PolizaDto> CrearPoliza(PolizaDto p)
         {
             throw new NotImplementedException();
         }
 
-        public void EliminarPoliza(int id)
+        public async void EliminarPoliza(int id)
         {
             throw new NotImplementedException();
         }
 
-        public PolizaDto ObtenerPoliza(int id)
+        public async Task<PolizaDto> ObtenerPoliza(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<TipoCubrimientoDto> ObtenerTiposCubrimiento()
+        public async Task<List<TipoCubrimientoDto>> ObtenerTiposCubrimiento()
         {
-            throw new NotImplementedException();
+            var result = await _dbcontext.Tipocubrimiento.ToListAsync();
+
+            return _mapper.Map<List<TipoCubrimientoDto>>(result);
         }
 
-        public List<TipoRiesgoDto> ObtenerTiposRiesgo()
+        public async Task<List<TipoRiesgoDto>> ObtenerTiposRiesgo()
         {
-            throw new NotImplementedException();
+            var result = await _dbcontext.Tiporiesgo.ToListAsync();
+
+            return _mapper.Map<List<TipoRiesgoDto>>(result);
         }
     }
 }

@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using JR.GapCodeTest.Web.Models.Dto;
 
 namespace JR.GapCodeTest.Web.Services
 {
     public interface IPoliza
     {
-        List<TipoCubrimientoDto> ObtenerTiposCubrimiento();
-        List<TipoRiesgoDto> ObtenerTiposRiesgo();
-        PolizaDto CrearPoliza(PolizaDto p);
-        PolizaDto ObtenerPoliza(int id);
-        PolizaDto ActualizarPoliza(PolizaDto p);
+        Task<List<TipoCubrimientoDto>> ObtenerTiposCubrimiento();
+        Task<List<TipoRiesgoDto>> ObtenerTiposRiesgo();
+        Task<PolizaDto> CrearPoliza(PolizaDto p);
+        Task<PolizaDto> ObtenerPoliza(int id);
+        Task<PolizaDto> ActualizarPoliza(PolizaDto p);
         void EliminarPoliza(int id);
     }
 }

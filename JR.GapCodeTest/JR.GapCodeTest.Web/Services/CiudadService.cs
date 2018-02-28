@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using JR.GapCodeTest.Web.Data;
+using JR.GapCodeTest.Web.Models;
 using JR.GapCodeTest.Web.Models.Dto;
+using Microsoft.EntityFrameworkCore;
 
 namespace JR.GapCodeTest.Web.Services
 {
@@ -17,9 +20,11 @@ namespace JR.GapCodeTest.Web.Services
             _mapper = mapper;
         }
 
-        public List<CiudadDto> ObtenerCiudades()
+        public async Task<List<CiudadDto>> ObtenerCiudades()
         {
-            throw new NotImplementedException();
+            var result = await _dbcontext.Ciudad.ToListAsync();
+            
+            return _mapper.Map<List<CiudadDto>>(result);
         }
     }
 }

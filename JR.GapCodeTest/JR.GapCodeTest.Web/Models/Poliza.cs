@@ -20,6 +20,7 @@ namespace JR.GapCodeTest.Web.Models
 
         public Tipocubrimiento TipoCubrimiento { get; set; }
         public Tiporiesgo TipoRiesgo { get; set; }
+        public Agencia Agencia { get; set; }
         public ICollection<PolizaCliente> PolizaClientes { get; set; }
     }
 }

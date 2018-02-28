@@ -116,11 +116,23 @@ namespace JR.GapCodeTest.Web.Data
                 Nombre = "Jorge Ramirez"
             };
 
+            var cliente2 = new Cliente
+            {
+                Documento = "654321",
+                Nombre = "Pedro Perez"
+            };
+
+            var cliente3 = new Cliente
+            {
+                Documento = "998877",
+                Nombre = "Gonzo Gonzales"
+            };
+
             context.Ciudad.Add(ciudad);
             context.Agencia.Add(agencia);
             context.Tipocubrimiento.AddRange(tipoCubrimiento1, tipoCubrimiento2, tipoCubrimiento3, tipoCubrimiento4);
             context.Tiporiesgo.AddRange(tipoRiesgo1, tipoRiesgo2, tipoRiesgo3, tipoRiesgo4);
-            context.Cliente.Add(cliente1);
+            context.Cliente.AddRange(cliente1, cliente2, cliente3);
 
             context.SaveChanges();
         }

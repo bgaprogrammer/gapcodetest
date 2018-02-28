@@ -11,7 +11,7 @@ using System;
 namespace JR.GapCodeTest.Web.Data.Migrations
 {
     [DbContext(typeof(GapCodeTestDbContext))]
-    [Migration("20180228114329_Initial")]
+    [Migration("20180228123530_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -118,6 +118,8 @@ namespace JR.GapCodeTest.Web.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("AgenciaId");
+
                     b.Property<int>("CoberturaMeses");
 
                     b.Property<string>("Descripcion");
@@ -135,6 +137,8 @@ namespace JR.GapCodeTest.Web.Data.Migrations
                     b.Property<int?>("TipoRiesgoId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AgenciaId");
 
                     b.HasIndex("TipoCubrimientoId");
 
@@ -298,6 +302,10 @@ namespace JR.GapCodeTest.Web.Data.Migrations
 
             modelBuilder.Entity("JR.GapCodeTest.Web.Models.Poliza", b =>
                 {
+                    b.HasOne("JR.GapCodeTest.Web.Models.Agencia", "Agencia")
+                        .WithMany()
+                        .HasForeignKey("AgenciaId");
+
                     b.HasOne("JR.GapCodeTest.Web.Models.Tipocubrimiento", "TipoCubrimiento")
                         .WithMany("Polizas")
                         .HasForeignKey("TipoCubrimientoId");
@@ -312,12 +320,12 @@ namespace JR.GapCodeTest.Web.Data.Migrations
                     b.HasOne("JR.GapCodeTest.Web.Models.Cliente", "Cliente")
                         .WithMany("PolizaClientes")
                         .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("JR.GapCodeTest.Web.Models.Poliza", "Poliza")
                         .WithMany("PolizaClientes")
                         .HasForeignKey("PolizaId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

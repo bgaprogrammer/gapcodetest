@@ -35,35 +35,60 @@ namespace JR.GapCodeTest.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> ObtenerCiudades()
         {
-            return Ok();
+            var result = await _ciudadService.ObtenerCiudades();
+
+            if (!result.Any())
+                return NotFound();
+
+            return Ok(result);
         }
 
         [Route("api/[controller]/agencia")]
         [HttpGet]
         public async Task<IActionResult> ObtenerAgencias()
         {
-            return Ok();
+            var result = await _agenciaService.ObtenerAgencias();
+
+            if (!result.Any())
+                return NotFound();
+
+            return Ok(result);
         }
 
         [Route("api/[controller]/tipocubrimiento")]
         [HttpGet]
         public async Task<IActionResult> ObtenerTiposCubrimiento()
         {
-            return Ok();
+            var result = await _polizaService.ObtenerTiposCubrimiento();
+
+            if (!result.Any())
+                return NotFound();
+
+            return Ok(result);
         }
 
         [Route("api/[controller]/tiporiesgo")]
         [HttpGet]
         public async Task<IActionResult> ObtenerTiposRiesgo()
         {
-            return Ok();
+            var result = await _polizaService.ObtenerTiposRiesgo();
+
+            if (!result.Any())
+                return NotFound();
+
+            return Ok(result);
         }
 
         [Route("api/[controller]/clientes")]
         [HttpGet]
         public async Task<IActionResult> ObtenerClientes()
         {
-            return Ok();
+            var result = await _clienteService.ObtenerClientes();
+
+            if (!result.Any())
+                return NotFound();
+
+            return Ok(result);
         }
     }
 }

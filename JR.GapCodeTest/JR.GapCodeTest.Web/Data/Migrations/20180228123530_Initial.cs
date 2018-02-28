@@ -234,6 +234,7 @@ namespace JR.GapCodeTest.Web.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    AgenciaId = table.Column<int>(nullable: true),
                     CoberturaMeses = table.Column<int>(nullable: false),
                     Descripcion = table.Column<string>(nullable: true),
                     InicioVigencia = table.Column<DateTime>(nullable: false),
@@ -246,6 +247,12 @@ namespace JR.GapCodeTest.Web.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Poliza", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Poliza_Agencia_AgenciaId",
+                        column: x => x.AgenciaId,
+                        principalTable: "Agencia",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Poliza_Tipocubrimiento_TipoCubrimientoId",
                         column: x => x.TipoCubrimientoId,
@@ -275,13 +282,13 @@ namespace JR.GapCodeTest.Web.Data.Migrations
                         column: x => x.ClienteId,
                         principalTable: "Cliente",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_PolizaCliente_Poliza_PolizaId",
                         column: x => x.PolizaId,
                         principalTable: "Poliza",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -327,6 +334,11 @@ namespace JR.GapCodeTest.Web.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Poliza_AgenciaId",
+                table: "Poliza",
+                column: "AgenciaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Poliza_TipoCubrimientoId",
                 table: "Poliza",
                 column: "TipoCubrimientoId");
@@ -344,9 +356,6 @@ namespace JR.GapCodeTest.Web.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Agencia");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -366,9 +375,6 @@ namespace JR.GapCodeTest.Web.Data.Migrations
                 name: "PolizaCliente");
 
             migrationBuilder.DropTable(
-                name: "Ciudad");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
@@ -381,10 +387,16 @@ namespace JR.GapCodeTest.Web.Data.Migrations
                 name: "Poliza");
 
             migrationBuilder.DropTable(
+                name: "Agencia");
+
+            migrationBuilder.DropTable(
                 name: "Tipocubrimiento");
 
             migrationBuilder.DropTable(
                 name: "Tiporiesgo");
+
+            migrationBuilder.DropTable(
+                name: "Ciudad");
         }
     }
 }
