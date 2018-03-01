@@ -44,6 +44,14 @@ namespace JR.GapCodeTest.Web.Controllers
             return Ok(result);
         }
 
+        [HttpDelete]
+        public async Task<IActionResult> EliminarPoliza([FromBody]PolizaDto p)
+        {
+            var result = await _polizaService.EliminarPoliza(p);
+
+            return Ok(result);
+        }
+
         [HttpGet("agencia")]
         public async Task<IActionResult> ObtenerAgencias()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JR.GapCodeTest.Web.Models
 {
@@ -17,10 +18,19 @@ namespace JR.GapCodeTest.Web.Models
         public int CoberturaMeses { get; set; }
         public decimal Precio { get; set; }
         public int PorcentajeCubrimiento { get; set; }
+        public int AgenciaId { get; set; }
+        public int TipoRiesgoId { get; set; }
+        public int TipoCubrimientoId { get; set; }
 
-        public Tipocubrimiento TipoCubrimiento { get; set; }
-        public Tiporiesgo TipoRiesgo { get; set; }
+        [ForeignKey("AgenciaId")]
         public Agencia Agencia { get; set; }
+
+        [ForeignKey("TipoCubrimientoId")]
+        public Tipocubrimiento TipoCubrimiento { get; set; }
+
+        [ForeignKey("TipoRiesgoId")]
+        public Tiporiesgo TipoRiesgo { get; set; }
+
         public ICollection<PolizaCliente> PolizaClientes { get; set; }
     }
 }

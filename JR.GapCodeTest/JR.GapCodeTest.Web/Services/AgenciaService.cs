@@ -21,7 +21,7 @@ namespace JR.GapCodeTest.Web.Services
 
         public async Task<List<AgenciaDto>> ObtenerAgencias()
         {
-            var result = await _dbcontext.Agencia.ToListAsync();
+            var result = await _dbcontext.Agencia.Include(x => x.Ciudad).ToListAsync();
 
             return _mapper.Map<List<AgenciaDto>>(result);
         }

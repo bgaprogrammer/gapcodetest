@@ -12,6 +12,6 @@ namespace JR.GapCodeTest.Web.Services
         Task<PolizaDto> CrearPoliza(PolizaDto p);
         Task<List<PolizaDto>> ObtenerPolizas();
         Task<PolizaDto> ActualizarPoliza(PolizaDto p);
-        void EliminarPoliza(PolizaDto p);
+        Task<PolizaDto> EliminarPoliza(PolizaDto p);
     }
 }

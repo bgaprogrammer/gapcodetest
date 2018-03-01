@@ -2,6 +2,8 @@
 using AutoMapper;
 using JR.GapCodeTest.Web.Models;
 using JR.GapCodeTest.Web.Models.Dto;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace JR.GapCodeTest.Web.Services
 {
@@ -9,13 +11,12 @@ namespace JR.GapCodeTest.Web.Services
     {
         public MappingsProfile()
         {
-            CreateMap<Ciudad, CiudadDto>();
-            CreateMap<Agencia, AgenciaDto>();
-            CreateMap<Tiporiesgo, TipoRiesgoDto>();
-            CreateMap<Tipocubrimiento, TipoCubrimientoDto>();
-            CreateMap<Cliente, ClienteDto>();
-
-            CreateMap<Poliza, PolizaDto>().ReverseMap();
+            CreateMap<Ciudad, CiudadDto>().ReverseMap();
+            CreateMap<Agencia, AgenciaDto>().ReverseMap();
+            CreateMap<Tiporiesgo, TipoRiesgoDto>().ReverseMap();
+            CreateMap<Tipocubrimiento, TipoCubrimientoDto>().ReverseMap();
+            CreateMap<Cliente, ClienteDto>().ReverseMap();
+            CreateMap<PolizaDto, Poliza>().ReverseMap();
         }
     }
 }

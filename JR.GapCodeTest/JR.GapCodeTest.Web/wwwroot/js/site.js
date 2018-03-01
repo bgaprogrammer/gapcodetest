@@ -91,6 +91,16 @@ var polizaViewModel = kendo.observable({
                     xhr.setRequestHeader("Authorization", polizaViewModel.getAuthToken());
                 }
             },
+            destroy: {
+                url: "/api/poliza",
+                contentType: "application/json",
+                accepts: "application/json",
+                type: "DELETE",
+                dataType: "json",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", polizaViewModel.getAuthToken());
+                }
+            },
             parameterMap: function (options, operation) {
                 if (operation !== "read" && options) {
                     return kendo.stringify(options);
@@ -105,13 +115,13 @@ var polizaViewModel = kendo.observable({
                         type: "numeric"
                     },
                     agencia: {
-                        defaultValue: []
+                        defaultValue: {}
                     },
                     tipoCubrimiento: {
-                        defaultValue: []
+                        defaultValue: {}
                     },
                     tipoRiesgo: {
-                        defaultValue: []
+                        defaultValue: {}
                     },
                     clientes: {
                         defaultValue: []
@@ -168,6 +178,87 @@ var polizaViewModel = kendo.observable({
             $(".k-window-title").text("Editar Poliza");
             $(".k-grid-update").text("Actualizar");
         }
+
+        //Sets Inicio Vigencia min date
+        var dpInicioVigenciaModal = $("#dpInicioVigenciaModal").data("kendoDatePicker");
+        dpInicioVigenciaModal.min(new Date());
+
+        //Attach change event to the 
+        var ddlTipoRiesgoModal = $("#ddlTipoRiesgoModal").data("kendoDropDownList");
+        ddlTipoRiesgoModal.bind("select", polizaViewModel.get("onSelectddlTipoRiesgoModal"));
+    },
+    agenciaDS: new kendo.data.DataSource({
+        transport: {
+            read: {
+                url: "/api/poliza/agencia",
+                contentType: "application/json",
+                accepts: "application/json",
+                type: "GET",
+                dataType: "json",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", polizaViewModel.getAuthToken());
+                }
+            }
+        }
+    }),
+    tipoCubrimientoDS: new kendo.data.DataSource({
+        transport: {
+            read: {
+                url: "/api/poliza/tipocubrimiento",
+                contentType: "application/json",
+                accepts: "application/json",
+                type: "GET",
+                dataType: "json",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", polizaViewModel.getAuthToken());
+                }
+            }
+        }
+    }),
+    tipoRiesgoDS: new kendo.data.DataSource({
+        transport: {
+            read: {
+                url: "/api/poliza/tiporiesgo",
+                contentType: "application/json",
+                accepts: "application/json",
+                type: "GET",
+                dataType: "json",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", polizaViewModel.getAuthToken());
+                }
+            }
+        }
+    }),
+    clienteDS: new kendo.data.DataSource({
+        transport: {
+            read: {
+                url: "/api/poliza/cliente",
+                contentType: "application/json",
+                accepts: "application/json",
+                type: "GET",
+                dataType: "json",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", polizaViewModel.getAuthToken());
+                }
+            }
+        }
+    }),
+    onSelectddlTipoRiesgoModal: function(e) {
+        var selectedTipoRiesgo = e.sender.dataItem(e.item);
+
+        if(selectedTipoRiesgo) {
+            var ntxtPorcentajeCubrimientoModal = $("#ntxtPorcentajeCubrimientoModal").data("kendoNumericTextBox");
+            ntxtPorcentajeCubrimientoModal.max(selectedTipoRiesgo.maxPorcentajeCubrimiento);
+
+            var currentValue = ntxtPorcentajeCubrimientoModal.value();
+
+            if (currentValue) {
+                if(currentValue > selectedTipoRiesgo.maxPorcentajeCubrimiento) {
+                    ntxtPorcentajeCubrimientoModal.value(selectedTipoRiesgo.maxPorcentajeCubrimiento);
+                    ntxtPorcentajeCubrimientoModal.trigger("change");
+                }
+            }
+        }
     }
 });
 
@@ -184,9 +275,6 @@ var polizasView = new kendo.View($("#polizas-view").html(), {
     model: polizaViewModel,
     init: function() {
         polizaViewModel.getAuthToken();
-
-        var grid = this.element.find("[data-role=grid]").data("kendoGrid");
-        //widget.columns[2].editor = categoryEditor;
     },
     show: polizaViewModel.onShowPolizasView.bind(polizaViewModel)
 });
