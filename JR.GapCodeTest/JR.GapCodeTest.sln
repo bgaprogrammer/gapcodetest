@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JR.GapCodeTest.Web", "JR.GapCodeTest.Web\JR.GapCodeTest.Web.csproj", "{2DCF671D-1C50-45E5-B948-1407780E15D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JR.GapCodeTest.Test", "JR.GapCodeTest.Test\JR.GapCodeTest.Test.csproj", "{1E543234-4082-4274-9646-003C8F4E39AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +15,9 @@ Global
 		{2DCF671D-1C50-45E5-B948-1407780E15D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DCF671D-1C50-45E5-B948-1407780E15D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DCF671D-1C50-45E5-B948-1407780E15D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E543234-4082-4274-9646-003C8F4E39AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E543234-4082-4274-9646-003C8F4E39AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E543234-4082-4274-9646-003C8F4E39AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E543234-4082-4274-9646-003C8F4E39AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

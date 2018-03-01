@@ -66,7 +66,29 @@ namespace JR.GapCodeTest.Web.Services
 
         public async Task<PolizaDto> ActualizarPoliza(PolizaDto p)
         {
-            throw new NotImplementedException();
+            var poliza = await _dbcontext.Poliza.Include(x => x.PolizaClientes).FirstOrDefaultAsync(x => x.Id.Equals(p.Id));
+
+            if (poliza != null)
+            {
+                poliza.Nombre = p.Nombre;
+                poliza.Descripcion = p.Descripcion;
+                poliza.CoberturaMeses = p.CoberturaMeses;
+                poliza.InicioVigencia = p.InicioVigencia;
+                poliza.PorcentajeCubrimiento = p.PorcentajeCubrimiento;
+                poliza.Precio = p.Precio;
+                poliza.AgenciaId = p.Agencia.Id;
+                poliza.TipoCubrimientoId = p.TipoCubrimiento.Id;
+                poliza.TipoRiesgoId = p.TipoRiesgo.Id;
+                poliza.PolizaClientes.Clear();
+
+                await _dbcontext.SaveChangesAsync();
+
+                poliza.PolizaClientes = p.Clientes.Select(x => new PolizaCliente { ClienteId = x.Id }).ToList();
+
+                await _dbcontext.SaveChangesAsync();
+            }
+
+            return p;
         }
 
         public async Task<PolizaDto> EliminarPoliza(PolizaDto p)

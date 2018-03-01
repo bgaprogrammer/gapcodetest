@@ -91,6 +91,16 @@ var polizaViewModel = kendo.observable({
                     xhr.setRequestHeader("Authorization", polizaViewModel.getAuthToken());
                 }
             },
+            update: {
+                url: "/api/poliza",
+                contentType: "application/json",
+                accepts: "application/json",
+                type: "PUT",
+                dataType: "json",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", polizaViewModel.getAuthToken());
+                }
+            },
             destroy: {
                 url: "/api/poliza",
                 contentType: "application/json",

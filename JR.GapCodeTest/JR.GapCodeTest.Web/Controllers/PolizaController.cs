@@ -52,6 +52,14 @@ namespace JR.GapCodeTest.Web.Controllers
             return Ok(result);
         }
 
+        [HttpPut]
+        public async Task<IActionResult> ActualizarPoliza([FromBody]PolizaDto p)
+        {
+            var result = await _polizaService.ActualizarPoliza(p);
+
+            return Ok(result);
+        }
+
         [HttpGet("agencia")]
         public async Task<IActionResult> ObtenerAgencias()
         {
