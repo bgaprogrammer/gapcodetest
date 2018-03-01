@@ -10,8 +10,8 @@ namespace JR.GapCodeTest.Web.Services
         Task<List<TipoCubrimientoDto>> ObtenerTiposCubrimiento();
         Task<List<TipoRiesgoDto>> ObtenerTiposRiesgo();
         Task<PolizaDto> CrearPoliza(PolizaDto p);
-        Task<PolizaDto> ObtenerPoliza(int id);
+        Task<List<PolizaDto>> ObtenerPolizas();
         Task<PolizaDto> ActualizarPoliza(PolizaDto p);
-        void EliminarPoliza(int id);
+        void EliminarPoliza(PolizaDto p);
     }
 }

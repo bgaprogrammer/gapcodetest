@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace JR.GapCodeTest.Web.Models.Dto
 {
     public class PolizaDto
@@ -10,8 +12,10 @@ namespace JR.GapCodeTest.Web.Models.Dto
         public int CoberturaMeses { get; set; }
         public decimal Precio { get; set; }
         public int PorcentajeCubrimiento { get; set; }
-        public int IdTipoCubrimiento { get; set; }
-        public int IdTipoRiesgo { get; set; }
-        public int IdCliente { get; set; }
+
+        public AgenciaDto Agencia { get; set; }
+        public TipoCubrimientoDto TipoCubrimiento { get; set; }
+        public TipoRiesgoDto TipoRiesgo { get; set; }
+        public List<ClienteDto> Clientes { get; set; }
     }
 }

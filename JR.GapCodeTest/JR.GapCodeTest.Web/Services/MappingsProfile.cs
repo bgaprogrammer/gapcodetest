@@ -15,7 +15,7 @@ namespace JR.GapCodeTest.Web.Services
             CreateMap<Tipocubrimiento, TipoCubrimientoDto>();
             CreateMap<Cliente, ClienteDto>();
 
-            CreateMap<Poliza, PolizaDto>();
+            CreateMap<Poliza, PolizaDto>().ReverseMap();
         }
     }
 }

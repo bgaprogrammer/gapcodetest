@@ -7,9 +7,11 @@ using JR.GapCodeTest.Web.Data;
 using JR.GapCodeTest.Web.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using JR.GapCodeTest.Web.Models.Dto;
 
 namespace JR.GapCodeTest.Web.Controllers
 {
+    [Route("api/[controller]")]
     [Authorize]
     public class PolizaController : Controller
     {
@@ -26,67 +28,50 @@ namespace JR.GapCodeTest.Web.Controllers
             _polizaService = polizaService;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [Route("api/[controller]/ciudad")]
         [HttpGet]
-        public async Task<IActionResult> ObtenerCiudades()
+        public async Task<IActionResult> ObtenerPolizas()
         {
-            var result = await _ciudadService.ObtenerCiudades();
-
-            if (!result.Any())
-                return NotFound();
+            var result = await _polizaService.ObtenerPolizas();
 
             return Ok(result);
         }
 
-        [Route("api/[controller]/agencia")]
-        [HttpGet]
+        [HttpPost]
+        public async Task<IActionResult> CrearPoliza([FromBody]PolizaDto p)
+        {
+            var result = await _polizaService.CrearPoliza(p);
+
+            return Ok(result);
+        }
+
+        [HttpGet("agencia")]
         public async Task<IActionResult> ObtenerAgencias()
         {
             var result = await _agenciaService.ObtenerAgencias();
 
-            if (!result.Any())
-                return NotFound();
-
             return Ok(result);
         }
 
-        [Route("api/[controller]/tipocubrimiento")]
-        [HttpGet]
+        [HttpGet("tipocubrimiento")]
         public async Task<IActionResult> ObtenerTiposCubrimiento()
         {
             var result = await _polizaService.ObtenerTiposCubrimiento();
 
-            if (!result.Any())
-                return NotFound();
-
             return Ok(result);
         }
 
-        [Route("api/[controller]/tiporiesgo")]
-        [HttpGet]
+        [HttpGet("tiporiesgo")]
         public async Task<IActionResult> ObtenerTiposRiesgo()
         {
             var result = await _polizaService.ObtenerTiposRiesgo();
 
-            if (!result.Any())
-                return NotFound();
-
             return Ok(result);
         }
 
-        [Route("api/[controller]/clientes")]
-        [HttpGet]
+        [HttpGet("cliente")]
         public async Task<IActionResult> ObtenerClientes()
         {
             var result = await _clienteService.ObtenerClientes();
-
-            if (!result.Any())
-                return NotFound();
 
             return Ok(result);
         }

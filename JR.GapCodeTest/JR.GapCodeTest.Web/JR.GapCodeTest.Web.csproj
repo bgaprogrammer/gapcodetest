@@ -16,6 +16,7 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.0.1" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,7 +29,6 @@
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
     <Folder Include="Models\Dto\" />
-    <Folder Include="Views\Poliza\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Account\AccessDenied.cshtml" />
@@ -36,6 +36,8 @@
     <Content Remove="Views\Account\ExternalLogin.cshtml" />
     <Content Remove="Views\Account\ForgotPassword.cshtml" />
     <Content Remove="Views\Manage\_Layout.cshtml" />
+    <Content Remove="Views\Poliza\Index.cshtml" />
+    <Content Remove="wwwroot\lib\jquery\.bower.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Models\ManageViewModels\ChangePasswordViewModel.cs" />

@@ -17,6 +17,7 @@ using JR.GapCodeTest.Web.Services;
 using JR.GapCodeTest.Web.Models;
 using System.Text;
 using AutoMapper;
+using Newtonsoft.Json.Serialization;
 
 namespace JR.GapCodeTest.Web
 {
@@ -94,7 +95,7 @@ namespace JR.GapCodeTest.Web
             services.AddTransient<IPoliza, PolizaService>();
 
             services.AddAutoMapper(x => x.AddProfile(new MappingsProfile()));
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

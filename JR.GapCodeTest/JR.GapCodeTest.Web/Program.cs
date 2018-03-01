@@ -23,9 +23,9 @@ namespace JR.GapCodeTest.Web
                     var context = services.GetRequiredService<GapCodeTestDbContext>();
 
                     //context.Database.EnsureDeleted();
-                    context.Database.Migrate();
+                    //context.Database.Migrate();
                     
-                    SeedData.Initialize(services).Wait();
+                    //SeedData.Initialize(services).Wait();
                 }
                 catch (Exception ex)
                 {

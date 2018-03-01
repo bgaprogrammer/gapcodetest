@@ -12,10 +12,12 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using JR.GapCodeTest.Web.Models;
 using JR.GapCodeTest.Web.Models.Dto;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JR.GapCodeTest.Web.Controllers
 {
-    [Route("[controller]/[action]")]
+    [Route("api/[controller]")]
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -33,10 +35,15 @@ namespace JR.GapCodeTest.Web.Controllers
             _signInManager = signInManager;
             _logger = logger;
             _configuration = configuration;
-
         }
 
-        [HttpPost]
+        [HttpGet("", Name = "Test")]
+        public async Task<IActionResult> Test ()
+        {
+            return Ok(await Task.FromResult("Endpoint working"));
+        }
+
+        [HttpPost("", Name = "Login")]
         public async Task<IActionResult> Login([FromBody] LoginDto model)
         {
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
@@ -48,7 +55,7 @@ namespace JR.GapCodeTest.Web.Controllers
                 return Ok(await GenerateJwtToken(model.Email, appUser));
             }
 
-            return NotFound();
+            return BadRequest(string.Empty);
         }
 
         private async Task<object> GenerateJwtToken(string email, IdentityUser user)
