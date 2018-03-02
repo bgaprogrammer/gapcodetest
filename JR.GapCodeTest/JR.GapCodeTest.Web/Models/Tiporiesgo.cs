@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using JR.GapCodeTest.Web.Data.Repository;
 
 namespace JR.GapCodeTest.Web.Models
 {
-    public partial class Tiporiesgo
+    public partial class Tiporiesgo : IEntity
     {
         public Tiporiesgo()
         {
@@ -14,6 +15,6 @@ namespace JR.GapCodeTest.Web.Models
         public string Nombre { get; set; }
         public int MaxPorcentajeCubrimiento { get; set; }
 
-        public ICollection<Poliza> Polizas { get; set; }
+        public virtual ICollection<Poliza> Polizas { get; set; }
     }
 }

@@ -9,9 +9,9 @@ namespace JR.GapCodeTest.Web.Models
         public int ClienteId { get; set; }
 
         [ForeignKey("PolizaId")]
-        public Poliza Poliza { get; set; }
+        public virtual Poliza Poliza { get; set; }
 
         [ForeignKey("ClienteId")]
-        public Cliente Cliente { get; set; }
+        public virtual Cliente Cliente { get; set; }
     }
 }

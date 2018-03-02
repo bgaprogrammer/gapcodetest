@@ -8,6 +8,7 @@ using JR.GapCodeTest.Web.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using JR.GapCodeTest.Web.Models.Dto;
+using JR.GapCodeTest.Web.Services.Definition;
 
 namespace JR.GapCodeTest.Web.Controllers
 {
@@ -15,16 +16,10 @@ namespace JR.GapCodeTest.Web.Controllers
     [Authorize]
     public class PolizaController : Controller
     {
-        private readonly ICiudad _ciudadService;
-        private readonly IAgencia _agenciaService;
-        private readonly ICliente _clienteService;
-        private readonly IPoliza _polizaService;
+        private readonly IPolizaService _polizaService;
 
-        public PolizaController(ICiudad ciudadService, IAgencia agenciaService, ICliente clienteService, IPoliza polizaService)
+        public PolizaController(IPolizaService polizaService)
         {
-            _ciudadService = ciudadService;
-            _agenciaService = agenciaService;
-            _clienteService = clienteService;
             _polizaService = polizaService;
         }
 
@@ -63,7 +58,7 @@ namespace JR.GapCodeTest.Web.Controllers
         [HttpGet("agencia")]
         public async Task<IActionResult> ObtenerAgencias()
         {
-            var result = await _agenciaService.ObtenerAgencias();
+            var result = await _polizaService.ObtenerAgencias();
 
             return Ok(result);
         }
@@ -87,7 +82,7 @@ namespace JR.GapCodeTest.Web.Controllers
         [HttpGet("cliente")]
         public async Task<IActionResult> ObtenerClientes()
         {
-            var result = await _clienteService.ObtenerClientes();
+            var result = await _polizaService.ObtenerClientes();
 
             return Ok(result);
         }

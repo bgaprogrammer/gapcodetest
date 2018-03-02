@@ -29,6 +29,11 @@
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
     <Folder Include="Models\Dto\" />
+    <Folder Include="Data\Repository\" />
+    <Folder Include="Data\Repository\Definition\" />
+    <Folder Include="Data\Repository\Implementation\" />
+    <Folder Include="Services\Definition\" />
+    <Folder Include="Services\Implementation\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Account\AccessDenied.cshtml" />

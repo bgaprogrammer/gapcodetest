@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using JR.GapCodeTest.Web.Data.Repository;
 
 namespace JR.GapCodeTest.Web.Models
 {
-    public partial class Cliente
+    public partial class Cliente : IEntity
     {
         public Cliente()
         {
@@ -14,6 +15,6 @@ namespace JR.GapCodeTest.Web.Models
         public string Documento { get; set; }
         public string Nombre { get; set; }
 
-        public ICollection<PolizaCliente> PolizaClientes { get; set; }
+        public virtual ICollection<PolizaCliente> PolizaClientes { get; set; }
     }
 }

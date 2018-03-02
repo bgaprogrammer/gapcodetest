@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using JR.GapCodeTest.Web.Data.Repository;
 
 namespace JR.GapCodeTest.Web.Models
 {
-    public partial class Poliza
+    public partial class Poliza : IEntity
     {
         public Poliza()
         {
@@ -23,14 +24,14 @@ namespace JR.GapCodeTest.Web.Models
         public int TipoCubrimientoId { get; set; }
 
         [ForeignKey("AgenciaId")]
-        public Agencia Agencia { get; set; }
+        public virtual Agencia Agencia { get; set; }
 
         [ForeignKey("TipoCubrimientoId")]
-        public Tipocubrimiento TipoCubrimiento { get; set; }
+        public virtual Tipocubrimiento TipoCubrimiento { get; set; }
 
         [ForeignKey("TipoRiesgoId")]
-        public Tiporiesgo TipoRiesgo { get; set; }
+        public virtual Tiporiesgo TipoRiesgo { get; set; }
 
-        public ICollection<PolizaCliente> PolizaClientes { get; set; }
+        public virtual ICollection<PolizaCliente> PolizaClientes { get; set; }
     }
 }

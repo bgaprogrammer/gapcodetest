@@ -18,6 +18,10 @@ using JR.GapCodeTest.Web.Models;
 using System.Text;
 using AutoMapper;
 using Newtonsoft.Json.Serialization;
+using JR.GapCodeTest.Web.Data.Repository;
+using JR.GapCodeTest.Web.Data.Repository.Implementation;
+using JR.GapCodeTest.Web.Services.Implementation;
+using JR.GapCodeTest.Web.Services.Definition;
 
 namespace JR.GapCodeTest.Web
 {
@@ -89,10 +93,13 @@ namespace JR.GapCodeTest.Web
                 options.SlidingExpiration = true;
             });
 
-            services.AddTransient<ICiudad, CiudadService>();
-            services.AddTransient<IAgencia, AgenciaService>();
-            services.AddTransient<ICliente, ClienteService>();
-            services.AddTransient<IPoliza, PolizaService>();
+            services.AddTransient<IAgenciaRepository, AgenciaRepository>();
+            services.AddTransient<ICiudadRepository, CiudadRepository>();
+            services.AddTransient<IClienteRepository, ClienteRepository>();
+            services.AddTransient<IPolizaRepository, PolizaRepository>();
+            services.AddTransient<ITipoCubrimientoRepository, TipoCubrimientoRepository>();
+            services.AddTransient<ITipoRiesgoRepository, TipoRiesgoRepository>();
+            services.AddTransient<IPolizaService, PolizaService>();
 
             services.AddAutoMapper(x => x.AddProfile(new MappingsProfile()));
             services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
